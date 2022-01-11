@@ -13,7 +13,7 @@ public class UtilityGPT {
     public static int queryCounter = 0, tokenCounter = 0;
 
     /** whether the query count & token count should be continually printed to console */
-    public static boolean printQueryCounter = true;
+    public static boolean printQueryCounter = false;
 
     /** Utility method for using the GPT-3 Java Api Client
      *
