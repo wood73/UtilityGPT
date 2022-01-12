@@ -27,7 +27,7 @@ public class UtilityGPT {
      *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model) {
+    public static String query(String apiKey, String context, int tokens, String model) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -67,8 +67,8 @@ public class UtilityGPT {
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -110,8 +110,8 @@ public class UtilityGPT {
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, double topP) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, double topP) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -156,9 +156,9 @@ public class UtilityGPT {
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, double topP, double frequencyPenalty,
-                                            double presencePenalty) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, double topP, double frequencyPenalty,
+                               double presencePenalty) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -206,9 +206,9 @@ public class UtilityGPT {
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, double topP, double frequencyPenalty,
-                                            double presencePenalty, int bestOf) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, double topP, double frequencyPenalty,
+                               double presencePenalty, int bestOf) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -258,7 +258,7 @@ public class UtilityGPT {
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model, String stopSequence) {
+    public static String query(String apiKey, String context, int tokens, String model, String stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -302,8 +302,8 @@ public class UtilityGPT {
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, String stopSequence) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, String stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -349,8 +349,8 @@ public class UtilityGPT {
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, double topP, String stopSequence) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, double topP, String stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -399,9 +399,9 @@ public class UtilityGPT {
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, double topP, double frequencyPenalty,
-                                            double presencePenalty, String stopSequence) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, double topP, double frequencyPenalty,
+                               double presencePenalty, String stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -453,9 +453,9 @@ public class UtilityGPT {
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, double topP, double frequencyPenalty,
-                                            double presencePenalty, int bestOf, String stopSequence) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, double topP, double frequencyPenalty,
+                               double presencePenalty, int bestOf, String stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -507,7 +507,7 @@ public class UtilityGPT {
      * @param stopSequence, List of Strings which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model, List<String> stopSequence) {
+    public static String query(String apiKey, String context, int tokens, String model, List<String> stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -549,8 +549,8 @@ public class UtilityGPT {
      * @param stopSequence, List of Strings which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, List<String> stopSequence) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, List<String> stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -594,8 +594,8 @@ public class UtilityGPT {
      * @param stopSequence, List of Strings which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, double topP, List<String> stopSequence) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, double topP, List<String> stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -642,9 +642,9 @@ public class UtilityGPT {
      * @param stopSequence, List of Strings which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, double topP, double frequencyPenalty,
-                                            double presencePenalty, List<String> stopSequence) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, double topP, double frequencyPenalty,
+                               double presencePenalty, List<String> stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -694,9 +694,9 @@ public class UtilityGPT {
      * @param stopSequence, List of Strings which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, double topP, double frequencyPenalty,
-                                            double presencePenalty, int bestOf, List<String> stopSequence) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, double topP, double frequencyPenalty,
+                               double presencePenalty, int bestOf, List<String> stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -746,7 +746,7 @@ public class UtilityGPT {
      * @param stopAtPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model, boolean stopAtPunctuationMark) {
+    public static String query(String apiKey, String context, int tokens, String model, boolean stopAtPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -787,8 +787,8 @@ public class UtilityGPT {
      * @param stopAtPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, boolean stopAtPunctuationMark) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, boolean stopAtPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -831,8 +831,8 @@ public class UtilityGPT {
      * @param stopAtPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, double topP, boolean stopAtPunctuationMark) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, double topP, boolean stopAtPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -878,9 +878,9 @@ public class UtilityGPT {
      * @param stopAtPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, double topP, double frequencyPenalty,
-                                            double presencePenalty, boolean stopAtPunctuationMark) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, double topP, double frequencyPenalty,
+                               double presencePenalty, boolean stopAtPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -929,9 +929,9 @@ public class UtilityGPT {
      * @param stopAtPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
-    public static String queryLanguageModel(String apiKey, String context, int tokens, String model,
-                                            double temperature, double topP, double frequencyPenalty,
-                                            double presencePenalty, int bestOf, boolean stopAtPunctuationMark) {
+    public static String query(String apiKey, String context, int tokens, String model,
+                               double temperature, double topP, double frequencyPenalty,
+                               double presencePenalty, int bestOf, boolean stopAtPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
