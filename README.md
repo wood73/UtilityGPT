@@ -7,7 +7,7 @@ Basic usage example:
 ```
 String apiKey = "", prompt = "Java is", model = "davinci";
 int tokens = 50;
-String gptResponse = UtilityGPT.query(apiKey, prompt, tokens, model);
+String gptResponse = UtilityGPT.query(apiKey, model, prompt, tokens);
 ```
 
 Meaning of each parameter in all overloaded query methods:
