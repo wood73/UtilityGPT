@@ -41,7 +41,7 @@ Meaning of each parameter in all overloaded query methods:
 
 ------------------------------------------------------
 
-List of each method's parameters (each method has a duplicate without the apiKey parameter, using the global apiKey var):
+List of each method's parameters (each method has a duplicate without the apiKey parameter, which use the global apiKey var):
 ----------------------------------------------------
 - query(String apiKey, String model, String prompt, int tokens)
 - query(String apiKey, String model, String prompt, int tokens, String stopSequence)
