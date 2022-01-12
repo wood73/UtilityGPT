@@ -51,7 +51,7 @@ public class UtilityGPT {
     public static String query(String apiKey, String model, String prompt, int tokens) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -98,7 +98,7 @@ public class UtilityGPT {
                                double temperature) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -147,7 +147,7 @@ public class UtilityGPT {
                                double temperature, double topP) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -200,7 +200,7 @@ public class UtilityGPT {
                                double presencePenalty) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -256,7 +256,7 @@ public class UtilityGPT {
                                double presencePenalty, int bestOf) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -311,7 +311,7 @@ public class UtilityGPT {
     public static String query(String apiKey, String model, String prompt, int tokens, String stopSequence) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -362,7 +362,7 @@ public class UtilityGPT {
                                double temperature, String stopSequence) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -415,7 +415,7 @@ public class UtilityGPT {
                                double temperature, double topP, String stopSequence) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -472,7 +472,7 @@ public class UtilityGPT {
                                double presencePenalty, String stopSequence) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -532,7 +532,7 @@ public class UtilityGPT {
                                double presencePenalty, int bestOf, String stopSequence) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -589,7 +589,7 @@ public class UtilityGPT {
     public static String query(String apiKey, String model, String prompt, int tokens, List<String> stopSequences) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -638,7 +638,7 @@ public class UtilityGPT {
                                double temperature, List<String> stopSequences) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -689,7 +689,7 @@ public class UtilityGPT {
                                double temperature, double topP, List<String> stopSequences) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -744,7 +744,7 @@ public class UtilityGPT {
                                double presencePenalty, List<String> stopSequences) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -802,7 +802,7 @@ public class UtilityGPT {
                                double presencePenalty, int bestOf, List<String> stopSequences) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -857,7 +857,7 @@ public class UtilityGPT {
     public static String query(String apiKey, String model, String prompt, int tokens, boolean cutOffLastPunctuationMark) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -905,7 +905,7 @@ public class UtilityGPT {
                                double temperature, boolean cutOffLastPunctuationMark) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -955,7 +955,7 @@ public class UtilityGPT {
                                double temperature, double topP, boolean cutOffLastPunctuationMark) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1009,7 +1009,7 @@ public class UtilityGPT {
                                double presencePenalty, boolean cutOffLastPunctuationMark) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1066,7 +1066,7 @@ public class UtilityGPT {
                                double presencePenalty, int bestOf, boolean cutOffLastPunctuationMark) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1118,7 +1118,7 @@ public class UtilityGPT {
     public static String query(String model, String prompt, int tokens) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1164,7 +1164,7 @@ public class UtilityGPT {
                                double temperature) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1212,7 +1212,7 @@ public class UtilityGPT {
                                double temperature, double topP) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1264,7 +1264,7 @@ public class UtilityGPT {
                                double presencePenalty) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1319,7 +1319,7 @@ public class UtilityGPT {
                                double presencePenalty, int bestOf) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1373,7 +1373,7 @@ public class UtilityGPT {
     public static String query(String model, String prompt, int tokens, String stopSequence) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1423,7 +1423,7 @@ public class UtilityGPT {
                                double temperature, String stopSequence) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1475,7 +1475,7 @@ public class UtilityGPT {
                                double temperature, double topP, String stopSequence) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1531,7 +1531,7 @@ public class UtilityGPT {
                                double presencePenalty, String stopSequence) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1590,7 +1590,7 @@ public class UtilityGPT {
                                double presencePenalty, int bestOf, String stopSequence) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1646,7 +1646,7 @@ public class UtilityGPT {
     public static String query(String model, String prompt, int tokens, List<String> stopSequences) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1694,7 +1694,7 @@ public class UtilityGPT {
                                double temperature, List<String> stopSequences) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1744,7 +1744,7 @@ public class UtilityGPT {
                                double temperature, double topP, List<String> stopSequences) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1798,7 +1798,7 @@ public class UtilityGPT {
                                double presencePenalty, List<String> stopSequences) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1855,7 +1855,7 @@ public class UtilityGPT {
                                double presencePenalty, int bestOf, List<String> stopSequences) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1909,7 +1909,7 @@ public class UtilityGPT {
     public static String query(String model, String prompt, int tokens, boolean cutOffLastPunctuationMark) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -1956,7 +1956,7 @@ public class UtilityGPT {
                                double temperature, boolean cutOffLastPunctuationMark) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -2005,7 +2005,7 @@ public class UtilityGPT {
                                double temperature, double topP, boolean cutOffLastPunctuationMark) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -2058,7 +2058,7 @@ public class UtilityGPT {
                                double presencePenalty, boolean cutOffLastPunctuationMark) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
@@ -2114,7 +2114,7 @@ public class UtilityGPT {
                                double presencePenalty, int bestOf, boolean cutOffLastPunctuationMark) {
 
         if(automaticallyIncludePromptTokens) {
-            tokens += (int)Math.ceil(prompt.length() / 4.0);
+            tokens += prompt.length() / 4;
         }
 
         queryCounter++;
