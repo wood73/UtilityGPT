@@ -24,19 +24,19 @@ String gptResponse = UtilityGPT.query(model, prompt, tokens);
 
 Meaning of each parameter in all overloaded query methods:
 ----------------------------------------------------
-     * @param apiKey (String), your GPT-3 API key
-     * @param model (String), model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
      *              curie-instruct-beta-v2, davinci-instruct-beta-v3
-     * @param prompt (String), Prompt sent to the language model
-     * @param tokens (int), Number of tokens that the language model will use, between both prompt/context length and generation length
+     * @param prompt, Prompt sent to the language model
+     * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
-     * @param frequencyPenalty (double), (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
-     * @param presencePenalty (double), (default 0) 0-1, lowers the chances of topic repetition
-     * @param bestOf (int), (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
+     * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
+     * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
+     * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
      * @param cutOffLastPunctuationMark (boolean), whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @param stopSequence, String that GPT-3 will stop generating after
-     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings (1 - 4 elements inclusive), each of which GPT-3 will stop generating after
      
 
 ------------------------------------------------------
