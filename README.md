@@ -25,6 +25,8 @@ There is a boolean global variable called `automaticallyIncludePromptTokens`, it
 UtilityGPT.automaticallyIncludePromptTokens = true;
 ```
 
+-----------------------------------------------------------------------
+
 Meaning of each parameter in all overloaded query methods:
 ----------------------------------------------------
      * @param apiKey (String), your GPT-3 API key
@@ -40,8 +42,11 @@ Meaning of each parameter in all overloaded query methods:
      * @param cutOffLastPunctuationMark (boolean), whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @param stopSequence, String that GPT-3 will stop generating after
      * @param stopSequences (List<String>), List of Strings, each of which GPT-3 will stop generating after
+     
 
-List of each method's parameters (each method has a duplicate without the apiKey parameter, using the global var):
+------------------------------------------------------
+
+List of each method's parameters (each method has a duplicate without the apiKey parameter, using the global apiKey var):
 ----------------------------------------------------
 - query(String apiKey, String model, String prompt, int tokens)
 - query(String apiKey, String model, String prompt, int tokens, String stopSequence)
