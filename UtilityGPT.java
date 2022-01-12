@@ -91,7 +91,7 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String prompt, int tokens,
@@ -139,8 +139,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String prompt, int tokens,
@@ -189,8 +189,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @return GPT-3's generated text
@@ -244,8 +244,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
@@ -354,7 +354,7 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
@@ -406,8 +406,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
@@ -460,8 +460,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param stopSequence, String that GPT-3 will stop generating after
@@ -519,8 +519,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
@@ -583,7 +583,7 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String prompt, int tokens, List<String> stopSequences) {
@@ -630,8 +630,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String prompt, int tokens,
@@ -680,9 +680,9 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
-     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String prompt, int tokens,
@@ -732,11 +732,11 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
-     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String prompt, int tokens,
@@ -789,12 +789,12 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
-     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String prompt, int tokens,
@@ -897,7 +897,7 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
@@ -946,8 +946,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
@@ -997,8 +997,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
@@ -1053,8 +1053,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
@@ -1157,7 +1157,7 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @return GPT-3's generated text
      */
     public static String query(String model, String prompt, int tokens,
@@ -1204,8 +1204,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @return GPT-3's generated text
      */
     public static String query(String model, String prompt, int tokens,
@@ -1253,8 +1253,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @return GPT-3's generated text
@@ -1307,8 +1307,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
@@ -1415,7 +1415,7 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
@@ -1466,8 +1466,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
@@ -1519,8 +1519,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param stopSequence, String that GPT-3 will stop generating after
@@ -1577,8 +1577,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
@@ -1640,7 +1640,7 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String model, String prompt, int tokens, List<String> stopSequences) {
@@ -1686,8 +1686,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String model, String prompt, int tokens,
@@ -1735,9 +1735,9 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
-     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String model, String prompt, int tokens,
@@ -1786,11 +1786,11 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
-     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String model, String prompt, int tokens,
@@ -1842,12 +1842,12 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
-     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String model, String prompt, int tokens,
@@ -1948,7 +1948,7 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
@@ -1996,8 +1996,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
@@ -2046,8 +2046,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
@@ -2101,8 +2101,8 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
