@@ -29,14 +29,14 @@ Meaning of each parameter in all overloaded query methods:
      *              curie-instruct-beta-v2, davinci-instruct-beta-v3
      * @param prompt (String), Prompt sent to the language model
      * @param tokens (int), Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param temperature (double), a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param topP (double), 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
+     * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty (double), (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty (double), (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf (int), (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
      * @param cutOffLastPunctuationMark (boolean), whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @param stopSequence, String that GPT-3 will stop generating after
-     * @param stopSequences (List<String>), List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
      
 
 ------------------------------------------------------
