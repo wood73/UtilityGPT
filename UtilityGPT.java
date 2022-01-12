@@ -583,7 +583,7 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings (1 - 4 elements inclusive), each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String prompt, int tokens, List<String> stopSequences) {
@@ -631,7 +631,7 @@ public class UtilityGPT {
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
      * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings (1 - 4 elements inclusive), each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String prompt, int tokens,
@@ -682,7 +682,7 @@ public class UtilityGPT {
      *                on average 1 token is used per 4 chars
      * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
-     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings (1 - 4 elements inclusive), each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String prompt, int tokens,
@@ -736,7 +736,7 @@ public class UtilityGPT {
      * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
-     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings (1 - 4 elements inclusive), each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String prompt, int tokens,
@@ -794,7 +794,7 @@ public class UtilityGPT {
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
-     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings (1 - 4 elements inclusive), each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String prompt, int tokens,
@@ -1640,7 +1640,7 @@ public class UtilityGPT {
      * @param prompt, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
-     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings (1 - 4 elements inclusive), each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String model, String prompt, int tokens, List<String> stopSequences) {
@@ -1687,7 +1687,7 @@ public class UtilityGPT {
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1 token is used per 4 chars
      * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings (1 - 4 elements inclusive), each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String model, String prompt, int tokens,
@@ -1737,7 +1737,7 @@ public class UtilityGPT {
      *                on average 1 token is used per 4 chars
      * @param temperature, (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
-     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings (1 - 4 elements inclusive), each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String model, String prompt, int tokens,
@@ -1790,7 +1790,7 @@ public class UtilityGPT {
      * @param topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
-     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings (1 - 4 elements inclusive), each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String model, String prompt, int tokens,
@@ -1847,7 +1847,7 @@ public class UtilityGPT {
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
-     * @param stopSequences, (1 - 4 elements inclusive) List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings (1 - 4 elements inclusive), each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String model, String prompt, int tokens,
