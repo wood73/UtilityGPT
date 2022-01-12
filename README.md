@@ -5,7 +5,7 @@ Enables easier queries to GPT-3 - all data except GPT-3's generated text is curr
 
 Basic usage example:
 ```
-String apiKey = "", prompt = "Java is", model = "davinci";
+String apiKey = "", model = "davinci", prompt = "Java is";
 int tokens = 50;
 String gptResponse = UtilityGPT.query(apiKey, model, prompt, tokens);
 ```
@@ -14,7 +14,7 @@ Meaning of each parameter in all overloaded query methods:
 ----------------------------------------------------
      * @param apiKey (String), your GPT-3 API key
      * @param model (String), model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 | check https://beta.openai.com/docs/engines/instruct-series-beta for new instruct models)
+     *              curie-instruct-beta-v2, davinci-instruct-beta-v3
      * @param prompt (String), Prompt sent to the language model
      * @param tokens (int), Number of tokens that the language model will use, between both prompt/context length and generation length
      * @param temperature (double), a value 0-1 with 1 being very creative, 0 being very factual/deterministic
