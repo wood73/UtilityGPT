@@ -512,10 +512,10 @@ public class UtilityGPT {
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1.4 tokens are used per word
-     * @param stopSequence, List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String model, String context, int tokens, List<String> stopSequence) {
+    public static String query(String apiKey, String model, String context, int tokens, List<String> stopSequences) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -531,7 +531,7 @@ public class UtilityGPT {
                     .prompt(context)
                     .echo(true);
             completionRequestBuilder.maxTokens(tokens);
-            completionRequestBuilder.stop(stopSequence);
+            completionRequestBuilder.stop(stopSequences);
 
             CompletionRequest completionRequest = completionRequestBuilder.build();
             List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
@@ -555,11 +555,11 @@ public class UtilityGPT {
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param stopSequence, List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String context, int tokens,
-                               double temperature, List<String> stopSequence) {
+                               double temperature, List<String> stopSequences) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -576,7 +576,7 @@ public class UtilityGPT {
                     .echo(true);
             completionRequestBuilder.maxTokens(tokens);
             completionRequestBuilder.temperature(temperature);
-            completionRequestBuilder.stop(stopSequence);
+            completionRequestBuilder.stop(stopSequences);
 
             CompletionRequest completionRequest = completionRequestBuilder.build();
             List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
@@ -601,11 +601,11 @@ public class UtilityGPT {
      *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
-     * @param stopSequence, List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String context, int tokens,
-                               double temperature, double topP, List<String> stopSequence) {
+                               double temperature, double topP, List<String> stopSequences) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -623,7 +623,7 @@ public class UtilityGPT {
             completionRequestBuilder.maxTokens(tokens);
             completionRequestBuilder.temperature(temperature);
             completionRequestBuilder.topP(topP);
-            completionRequestBuilder.stop(stopSequence);
+            completionRequestBuilder.stop(stopSequences);
 
             CompletionRequest completionRequest = completionRequestBuilder.build();
             List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
@@ -650,12 +650,12 @@ public class UtilityGPT {
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
-     * @param stopSequence, List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, double frequencyPenalty,
-                               double presencePenalty, List<String> stopSequence) {
+                               double presencePenalty, List<String> stopSequences) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -675,7 +675,7 @@ public class UtilityGPT {
             completionRequestBuilder.topP(topP);
             completionRequestBuilder.frequencyPenalty(frequencyPenalty);
             completionRequestBuilder.presencePenalty(presencePenalty);
-            completionRequestBuilder.stop(stopSequence);
+            completionRequestBuilder.stop(stopSequences);
 
             CompletionRequest completionRequest = completionRequestBuilder.build();
             List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
@@ -703,12 +703,12 @@ public class UtilityGPT {
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
-     * @param stopSequence, List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences, List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, double frequencyPenalty,
-                               double presencePenalty, int bestOf, List<String> stopSequence) {
+                               double presencePenalty, int bestOf, List<String> stopSequences) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -729,7 +729,7 @@ public class UtilityGPT {
             completionRequestBuilder.frequencyPenalty(frequencyPenalty);
             completionRequestBuilder.presencePenalty(presencePenalty);
             completionRequestBuilder.bestOf(bestOf);
-            completionRequestBuilder.stop(stopSequence);
+            completionRequestBuilder.stop(stopSequences);
 
             CompletionRequest completionRequest = completionRequestBuilder.build();
             List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
