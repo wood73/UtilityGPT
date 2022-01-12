@@ -743,10 +743,10 @@ public class UtilityGPT {
      *                on average 1.4 tokens are used per word
      * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
      *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
-     * @param stopAtPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
+     * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model, boolean stopAtPunctuationMark) {
+    public static String query(String apiKey, String context, int tokens, String model, boolean cutOffLastPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -766,7 +766,7 @@ public class UtilityGPT {
             CompletionRequest completionRequest = completionRequestBuilder.build();
             List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
 
-            String output = _apiOutputCondensed(outputList.get(0).toString(), stopAtPunctuationMark);
+            String output = _apiOutputCondensed(outputList.get(0).toString(), cutOffLastPunctuationMark);
 
             return output;
 
@@ -784,11 +784,11 @@ public class UtilityGPT {
      * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
      *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param stopAtPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
+     * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String context, int tokens, String model,
-                               double temperature, boolean stopAtPunctuationMark) {
+                               double temperature, boolean cutOffLastPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -809,7 +809,7 @@ public class UtilityGPT {
             CompletionRequest completionRequest = completionRequestBuilder.build();
             List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
 
-            String output = _apiOutputCondensed(outputList.get(0).toString(), stopAtPunctuationMark);
+            String output = _apiOutputCondensed(outputList.get(0).toString(), cutOffLastPunctuationMark);
 
             return output;
 
@@ -828,11 +828,11 @@ public class UtilityGPT {
      *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
-     * @param stopAtPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
+     * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String context, int tokens, String model,
-                               double temperature, double topP, boolean stopAtPunctuationMark) {
+                               double temperature, double topP, boolean cutOffLastPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -854,7 +854,7 @@ public class UtilityGPT {
             CompletionRequest completionRequest = completionRequestBuilder.build();
             List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
 
-            String output = _apiOutputCondensed(outputList.get(0).toString(), stopAtPunctuationMark);
+            String output = _apiOutputCondensed(outputList.get(0).toString(), cutOffLastPunctuationMark);
 
             return output;
 
@@ -875,12 +875,12 @@ public class UtilityGPT {
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
-     * @param stopAtPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
+     * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String context, int tokens, String model,
                                double temperature, double topP, double frequencyPenalty,
-                               double presencePenalty, boolean stopAtPunctuationMark) {
+                               double presencePenalty, boolean cutOffLastPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -904,7 +904,7 @@ public class UtilityGPT {
             CompletionRequest completionRequest = completionRequestBuilder.build();
             List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
 
-            String output = _apiOutputCondensed(outputList.get(0).toString(), stopAtPunctuationMark);
+            String output = _apiOutputCondensed(outputList.get(0).toString(), cutOffLastPunctuationMark);
 
             return output;
 
@@ -926,12 +926,12 @@ public class UtilityGPT {
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
-     * @param stopAtPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
+     * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
     public static String query(String apiKey, String context, int tokens, String model,
                                double temperature, double topP, double frequencyPenalty,
-                               double presencePenalty, int bestOf, boolean stopAtPunctuationMark) {
+                               double presencePenalty, int bestOf, boolean cutOffLastPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -956,7 +956,7 @@ public class UtilityGPT {
             CompletionRequest completionRequest = completionRequestBuilder.build();
             List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
 
-            String output = _apiOutputCondensed(outputList.get(0).toString(), stopAtPunctuationMark);
+            String output = _apiOutputCondensed(outputList.get(0).toString(), cutOffLastPunctuationMark);
 
             return output;
 
@@ -975,10 +975,10 @@ public class UtilityGPT {
      *
      * @param output, what is outputted by an OpenAiService object calling the methods -
      *                createCompletion(model, completionRequest).getChoices().get(0).toString()
-     * @param stopAtPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
+     * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return Language model's raw output
      */
-    public static String _apiOutputCondensed(String output, boolean stopAtPunctuationMark) {
+    public static String _apiOutputCondensed(String output, boolean cutOffLastPunctuationMark) {
         String cOut = output.toString();
         //start inclusive, end exclusive
         int endIndex = 0, startIndex = cOut.indexOf('=') + 1;
@@ -991,7 +991,7 @@ public class UtilityGPT {
             }
         }
         String format = cOut.substring(startIndex, endIndex);
-        if(stopAtPunctuationMark) {
+        if(cutOffLastPunctuationMark) {
             if(format.contains(".") || format.contains("!") || format.contains("?")) {
                 //index will be -1 if char not found
                 int periodIndex = format.lastIndexOf('.');
