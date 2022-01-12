@@ -20,14 +20,14 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1.4 tokens are used per word
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model) {
+    public static String query(String apiKey, String model, String context, int tokens) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -60,14 +60,15 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature) {
         queryCounter++;
         tokenCounter += tokens;
@@ -102,15 +103,16 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP) {
         queryCounter++;
         tokenCounter += tokens;
@@ -146,17 +148,18 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, double frequencyPenalty,
                                double presencePenalty) {
         queryCounter++;
@@ -195,10 +198,11 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
@@ -206,7 +210,7 @@ public class UtilityGPT {
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, double frequencyPenalty,
                                double presencePenalty, int bestOf) {
         queryCounter++;
@@ -250,15 +254,15 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1.4 tokens are used per word
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model, String stopSequence) {
+    public static String query(String apiKey, String model, String context, int tokens, String stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -294,15 +298,16 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, String stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
@@ -340,16 +345,17 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, String stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
@@ -388,10 +394,11 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
@@ -399,7 +406,7 @@ public class UtilityGPT {
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, double frequencyPenalty,
                                double presencePenalty, String stopSequence) {
         queryCounter++;
@@ -441,10 +448,11 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
@@ -453,7 +461,7 @@ public class UtilityGPT {
      * @param stopSequence, String that GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, double frequencyPenalty,
                                double presencePenalty, int bestOf, String stopSequence) {
         queryCounter++;
@@ -499,15 +507,15 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1.4 tokens are used per word
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
-     * @param stopSequence, List of Strings which GPT-3 will stop generating after
+     * @param stopSequence, List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model, List<String> stopSequence) {
+    public static String query(String apiKey, String model, String context, int tokens, List<String> stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -541,15 +549,16 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     * @param stopSequence, List of Strings which GPT-3 will stop generating after
+     * @param stopSequence, List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, List<String> stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
@@ -585,16 +594,17 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
-     * @param stopSequence, List of Strings which GPT-3 will stop generating after
+     * @param stopSequence, List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, List<String> stopSequence) {
         queryCounter++;
         tokenCounter += tokens;
@@ -631,18 +641,19 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
-     * @param stopSequence, List of Strings which GPT-3 will stop generating after
+     * @param stopSequence, List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, double frequencyPenalty,
                                double presencePenalty, List<String> stopSequence) {
         queryCounter++;
@@ -682,19 +693,20 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
      * @param presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      * @param bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
-     * @param stopSequence, List of Strings which GPT-3 will stop generating after
+     * @param stopSequence, List of Strings, each of which GPT-3 will stop generating after
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, double frequencyPenalty,
                                double presencePenalty, int bestOf, List<String> stopSequence) {
         queryCounter++;
@@ -738,15 +750,15 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
      *                on average 1.4 tokens are used per word
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model, boolean cutOffLastPunctuationMark) {
+    public static String query(String apiKey, String model, String context, int tokens, boolean cutOffLastPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
         if(printQueryCounter) {
@@ -779,15 +791,16 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, boolean cutOffLastPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
@@ -822,16 +835,17 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, boolean cutOffLastPunctuationMark) {
         queryCounter++;
         tokenCounter += tokens;
@@ -867,10 +881,11 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
@@ -878,7 +893,7 @@ public class UtilityGPT {
      * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, double frequencyPenalty,
                                double presencePenalty, boolean cutOffLastPunctuationMark) {
         queryCounter++;
@@ -917,10 +932,11 @@ public class UtilityGPT {
     /** Utility method for using the GPT-3 Java Api Client
      *
      * @param apiKey, your GPT-3 API key
+     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
+     *               curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
      * @param context, Prompt sent to the language model
      * @param tokens, Number of tokens that the language model will use, between both prompt/context length and generation length
-     * @param model, model to use (ada, babbage, curie, davinci | ada-instruct-beta, babbage-instruct-beta,
-     *              curie-instruct-beta-v2, davinci-instruct-beta-v3 https://beta.openai.com/docs/engines/instruct-series-beta)
+     *                on average 1.4 tokens are used per word
      * @param temperature, a value 0-1 with 1 being very creative, 0 being very factual/deterministic
      * @param topP, 0-1 | 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      * @param frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
@@ -929,7 +945,7 @@ public class UtilityGPT {
      * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return GPT-3's generated text
      */
-    public static String query(String apiKey, String context, int tokens, String model,
+    public static String query(String apiKey, String model, String context, int tokens,
                                double temperature, double topP, double frequencyPenalty,
                                double presencePenalty, int bestOf, boolean cutOffLastPunctuationMark) {
         queryCounter++;
