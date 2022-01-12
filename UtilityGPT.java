@@ -995,18 +995,17 @@ public class UtilityGPT {
      * @return Language model's raw output
      */
     public static String _apiOutputCondensed(String output, boolean cutOffLastPunctuationMark) {
-        String cOut = output.toString();
         //start inclusive, end exclusive
-        int endIndex = 0, startIndex = cOut.indexOf('=') + 1;
-        for(int i = cOut.length() - 1, commaCount = 0; i >= 0 && endIndex == 0; i--) {
-            if(cOut.charAt(i) == ',') {
+        int endIndex = 0, startIndex = output.indexOf('=') + 1;
+        for(int i = output.length() - 1, commaCount = 0; i >= 0 && endIndex == 0; i--) {
+            if(output.charAt(i) == ',') {
                 commaCount++;
             }
             if(commaCount == 3) {
                 endIndex = i;
             }
         }
-        String format = cOut.substring(startIndex, endIndex);
+        String format = output.substring(startIndex, endIndex);
         if(cutOffLastPunctuationMark) {
             if(format.contains(".") || format.contains("!") || format.contains("?")) {
                 //index will be -1 if char not found
