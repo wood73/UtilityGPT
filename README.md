@@ -24,32 +24,32 @@ Meaning of each parameter in all overloaded query methods:
      * @param bestOf (int), (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
      * @param cutOffLastPunctuationMark (boolean), whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @param stopSequence, String that GPT-3 will stop generating after
-     * @param stopSequence (List<String>), List of Strings, each of which GPT-3 will stop generating after
+     * @param stopSequences (List<String>), List of Strings, each of which GPT-3 will stop generating after
 
 List of each method's parameters:
 ----------------------------------------------------
 - query(String apiKey, String model, String context, int tokens)
 - query(String apiKey, String model, String context, int tokens, String stopSequence)
-- query(String apiKey, String model, String context, int tokens, List\<String\> stopSequence)
+- query(String apiKey, String model, String context, int tokens, List\<String\> stopSequences)
 - query(String apiKey, String model, String context, int tokens, boolean cutOffLastPunctuationMark)
 -----------------------------------------------------
 - query(String apiKey, String model, String context, int tokens, double temperature)
 - query(String apiKey, String model, String context, int tokens, double temperature, String stopSequence)
-- query(String apiKey, String model, String context, int tokens, double temperature, List\<String\> stopSequence)
+- query(String apiKey, String model, String context, int tokens, double temperature, List\<String\> stopSequences)
 - query(String apiKey, String model, String context, int tokens, double temperature, boolean cutOffLastPunctuationMark)
 -----------------------------------------------------
 - query(String apiKey, String model, String context, int tokens, double temperature, double topP)
 - query(String apiKey, String model, String context, int tokens, double temperature, double topP, String stopSequence)
-- query(String apiKey, String model, String context, int tokens, double temperature, double topP, List\<String\> stopSequence)
+- query(String apiKey, String model, String context, int tokens, double temperature, double topP, List\<String\> stopSequences)
 - query(String apiKey, String model, String context, int tokens, double temperature, double topP, boolean cutOffLastPunctuationMark)
 -----------------------------------------------------
 - query(String apiKey, String model, String context, int tokens, double temperature, double topP, double frequencyPenalty, double presencePenalty)
 - query(String apiKey, String model, String context, int tokens, double temperature, double topP, double frequencyPenalty, double presencePenalty, String stopSequence)
-- query(String apiKey, String model, String context, int tokens, double temperature, double topP, double frequencyPenalty, List\<String\> stopSequence)
+- query(String apiKey, String model, String context, int tokens, double temperature, double topP, double frequencyPenalty, List\<String\> stopSequences)
 - query(String apiKey, String model, String context, int tokens, double temperature, double topP, double frequencyPenalty, double presencePenalty, boolean cutOffLastPunctuationMark)
 -----------------------------------------------------
 - query(String apiKey, String model, String context, int tokens, double temperature, double topP, double frequencyPenalty, double presencePenalty, int bestOf)
 - query(String apiKey, String model, String context, int tokens, double temperature, double topP, double frequencyPenalty, double presencePenalty, int bestOf, String stopSequence)
-- query(String apiKey, String model, String context, int tokens, double temperature, double topP, double frequencyPenalty, int bestOf, List\<String\> stopSequence)
+- query(String apiKey, String model, String context, int tokens, double temperature, double topP, double frequencyPenalty, int bestOf, List\<String\> stopSequences)
 - query(String apiKey, String model, String context, int tokens, double temperature, double topP, double frequencyPenalty, double presencePenalty, int bestOf, boolean cutOffLastPunctuationMark)
 -----------------------------------------------------
