@@ -3,6 +3,13 @@ A Utility for another repository which is an OpenAI GPT-3 Api Client in Java - h
 
 Enables easier queries to GPT-3 - all data except GPT-3's generation is omitted.
 
+Basic usage example:
+```
+String apiKey = "", prompt = "Java is", model = "davinci";
+int tokens = 50;
+String gptResponse = UtilityGPT.query(apiKey, prompt, tokens, model);
+```
+
 Meaning of each parameter in all overloaded query methods:
 ----------------------------------------------------
      * @param apiKey (String), your GPT-3 API key
