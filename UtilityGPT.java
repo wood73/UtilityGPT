@@ -55,14 +55,21 @@ public class UtilityGPT {
      *              Only mandatory settings are model, tokens, and if Utility.apiKey isn't set, the apiKey as well
      *              if setting starts with 'a', it'll set the apiKey
      *              if setting starts with 'm' it'll set the model (can use UtilityGPT.model_name)
-     *              if setting starts with 'tok' (tokens) If automaticallyIncludePromptTokens is false, it'll set the number of tokens that the language model will use, between both prompt length and generation length
-     *              if setting starts with 'te' it'll set the temperature (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     *              if setting starts with 'top' it'll set the topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
-     *              if setting starts with 'f' it'll set the frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
+     *              if setting starts with 'tok' (tokens) If automaticallyIncludePromptTokens is false, it'll set the
+                        number of tokens that the language model will use, between both prompt length and generation length
+     *              if setting starts with 'te' it'll set the temperature (default 1) a value 0-1 with 1 being very creative,
+                        0 being very factual/deterministic
+     *              if setting starts with 'top' it'll set the topP, (default 1) between 0-1 where 1.0 means
+                        "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     *              if setting starts with 'f' it'll set the frequencyPenalty, (default 0) 0-1, lowers the chances of a
+                        word being selected again the more times that word has already been used
      *              if setting starts with 'p' it'll set the presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
-     *              if setting starts with 'b' it'll set the bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
-     *              if setting starts with 'c' it'll set cutOffLastPunctuationMark (boolean), whether GPT-3's full output should be cut off after the last detected punctuation mark
-     *              if setting starts with 's' it'll set the stop sequence, the String that GPT-3 will stop generating after (can have 4 stop sequences max)
+     *              if setting starts with 'b' it'll set the bestOf, (default 1), queries GPT-3 this many times, then
+                        selects the 'best' generation to return
+     *              if setting starts with 'c' it'll set cutOffLastPunctuationMark (boolean), whether GPT-3's full output
+                        should be cut off after the last detected punctuation mark (if none found after prompt, nothing removed)
+     *              if setting starts with 's' it'll set the stop sequence, the String that GPT-3 will stop generating after
+                        (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
      * @return GPT-3's generated text
      */
     public static String query(String prompt, String... args) {
@@ -77,15 +84,20 @@ public class UtilityGPT {
             double temp = 1, top = 1, freq = 0, pres = 0;
             boolean cutOffLastPunctuationMark = false;
 
+            //this flag variable will be used to set bestOf = 1 if (bestOf != 1 && isInstructModel)
+            //& warn user, since the OpenAI API will throw an HTTP 500 error if an instruct model is used when bestOf != 1
+            boolean isInstructModel = false;
+
             for (int i = 0; i < args.length; i++) {
 
                 String key = args[i].split(":")[0].trim().toLowerCase();
-                String value = args[i].split(":")[1].trim();
+                String value = key.startsWith("s") ? args[i].split(":")[1] : args[i].split(":")[1].trim();
 
                 if (key.startsWith("a")) {
                     apiKey = value;
                 } else if (key.startsWith("m")) {
                     model = value;
+                    isInstructModel = model.contains("instruct");
                 } else if (key.startsWith("tok")) {
                     tokens = Integer.parseInt(value);
                     if(automaticallyIncludePromptTokens) {
@@ -110,7 +122,7 @@ public class UtilityGPT {
                     }
                 } else if (key.startsWith("s")) {
                     if(stopSequences.size() == 4) {
-                        System.out.println("warning: there can not be more than 4 stop sequences, ignoring the" +
+                        System.out.println("Warning: there can not be more than 4 stop sequences, ignoring the" +
                                 " stop sequence \'" + value + "\'");
                     }
                     else {
@@ -125,6 +137,12 @@ public class UtilityGPT {
                 System.out.println("---------------------------------------------\n" +
                         "# of GPT-3 queries: " + queryCounter + "\nTotal tokens used: " + tokenCounter + "\n" +
                         "---------------------------------------------");
+            }
+
+            if(isInstructModel && bestOf != 1) {
+                System.out.println("######################\nWarning: Instruct models must have a bestOf value = 1 " +
+                        "(or HTTP 500 error thrown)\nchanging bestOf from " + bestOf + " to 1.\n######################");
+                bestOf = 1;
             }
 
             if(model.length() == 0) {
@@ -143,6 +161,7 @@ public class UtilityGPT {
                 CompletionRequest.CompletionRequestBuilder completionRequestBuilder = CompletionRequest.builder()
                         .prompt(prompt)
                         .echo(true);
+
                 completionRequestBuilder.maxTokens(tokens);
                 completionRequestBuilder.temperature(temp);
                 completionRequestBuilder.topP(top);
@@ -155,7 +174,8 @@ public class UtilityGPT {
                 CompletionRequest completionRequest = completionRequestBuilder.build();
                 List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
 
-                String output = _apiOutputCondensed(outputList.get(0).toString(), cutOffLastPunctuationMark);
+                String output = _apiOutputCondensed(outputList.get(0).toString(), prompt.length() - 1,
+                        cutOffLastPunctuationMark);
 
                 return output;
             }
@@ -173,10 +193,12 @@ public class UtilityGPT {
      *
      * @param output, what is outputted by an OpenAiService object calling the methods -
      *                createCompletion(model, completionRequest).getChoices().get(0).toString()
+     * @param punctuationIgnoreIndex, if cutOffLastPunctuationMark is true,
+     *                                any punctuation marks <= punctuationIgnoreIndex will be ignored
      * @param cutOffLastPunctuationMark, whether GPT-3's full output should be cut off at the last detected punctuation mark
      * @return Language model's raw output
      */
-    public static String _apiOutputCondensed(String output, boolean cutOffLastPunctuationMark) {
+    public static String _apiOutputCondensed(String output, int punctuationIgnoreIndex, boolean cutOffLastPunctuationMark) {
         //start inclusive, end exclusive
         int endIndex = 0, startIndex = output.indexOf('=') + 1;
         for(int i = output.length() - 1, commaCount = 0; i >= 0 && endIndex == 0; i--) {
@@ -195,11 +217,11 @@ public class UtilityGPT {
                 int exclamationIndex = format.lastIndexOf('!');
                 int questionIndex = format.lastIndexOf('?');
 
-                if(periodIndex > exclamationIndex && periodIndex > questionIndex)
+                if(periodIndex > exclamationIndex && periodIndex > questionIndex && periodIndex > punctuationIgnoreIndex)
                     return format.substring(0, periodIndex + 1);
-                else if(exclamationIndex > questionIndex)
+                else if(exclamationIndex > questionIndex && exclamationIndex > punctuationIgnoreIndex)
                     return format.substring(0, exclamationIndex + 1);
-                else
+                else if(questionIndex > punctuationIgnoreIndex)
                     return format.substring(0, questionIndex + 1);
             }
         }
