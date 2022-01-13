@@ -22,7 +22,7 @@ Required parameters:
 3. Model
 4. Tokens
 
-Optional parameters ([more info](https://github.com/woodrow73/UtilityGPT/blob/main/README.md/#:~:text=boolean%20global%20variable%20called%20automaticallyIncludePromptTokens%2C%20it%20sets%20whether%20the%20tokens%20parameter%20should%20only%20refer%20to%20new%20text%20generated%20by%20GPT)):
+Optional parameters ([more info](https://github.com/woodrow73/UtilityGPT/blob/main/README.md/#javadocs-for-utilitygptquerystring-prompt-string-args)):
 1. Temperature (default 1)
 2. TopP (default 1)
 3. Frequency Penalty (default 0)
