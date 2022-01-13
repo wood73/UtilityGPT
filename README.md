@@ -64,7 +64,7 @@ Javadocs for UtilityGPT.query(String prompt, String... args)
                         should be cut off after the last detected punctuation mark (if none found after prompt, nothing removed)
      *              if setting starts with 's' it'll set the stop sequence, the String that GPT-3 will stop generating after
                         (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
-     * @return GPT-3's generated text
+     * @return GPT-3's returned text (prompt + generated)
      */
 
 ----------------------------------------------------------------------------------------
