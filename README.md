@@ -3,23 +3,43 @@ A Utility for another repository which is an OpenAI GPT-3 Api Client in Java - h
 
 Enables easier queries to GPT-3 - all data except GPT-3's returned text (including prompt) is currently omitted.
 
+UtilityGPT.query method header:
+```
+public static String query(String prompt, String... args) {
+```
+
+Each element passed into the varargs must be in the format `"setting:value"`, using `:` as a delimiter.  Only using the first 3 letters of a setting will guarantee it's recognized. If the setting is `stop sequence`, then its value will not have leading & trailing spaces removed; in all other cases, they will be removed.  Order of vararg elements is irrelevant.
+
 Basic usage example:
 ```
 String prompt = "Java is";
-//first argument is prompt, the rest of the arguments are varargs (any number of arguments, only api-key, model, and token arguments are required)
 String gptResponse = UtilityGPT.query(prompt, "apikey: mykey", "model: curie", "tokens: 30");
 ```
 
-Can also set the global apiKey variable, and omit sending it as a parameter:
+Required parameters:
+1. Prompt
+2. API key
+3. Model
+4. Tokens
+
+Optional parameters ([more info](https://github.com/woodrow73/UtilityGPT/blob/main/README.md/#:~:text=boolean%20global%20variable%20called%20automaticallyIncludePromptTokens%2C%20it%20sets%20whether%20the%20tokens%20parameter%20should%20only%20refer%20to%20new%20text%20generated%20by%20GPT)):
+1. Temperature (default 1)
+2. TopP (default 1)
+3. Frequency Penalty (default 0)
+4. Presence Penalty (default 0)
+5. Best Of (default 1)
+6. Stop Sequence (max of 4 stop sequences)
+7. Cut off output after last punctuation mark generated
+
+If the global apiKey variable is set, then can omit sending it as a parameter:
 ```
 UtilityGPT.apiKey = "";
 String prompt = "Java is";
-//order of vararg parameters doesn't matter (except for prompt)
 String gptResponse = UtilityGPT.query(prompt, "tokens: 30", "model: curie");
 ```
 
 ---------------------------------------------------------------------------------------
-Javadocs for the UtilityGPT.query(String prompt, String... args) method
+Javadocs for UtilityGPT.query(String prompt, String... args)
 ---------------------------------------------------------------------------------------
 
     /** Utility method for using the GPT-3 Java Api Client
@@ -29,14 +49,21 @@ Javadocs for the UtilityGPT.query(String prompt, String... args) method
      *              Only mandatory settings are model, tokens, and if Utility.apiKey isn't set, the apiKey as well
      *              if setting starts with 'a', it'll set the apiKey
      *              if setting starts with 'm' it'll set the model (can use UtilityGPT.model_name)
-     *              if setting starts with 'tok' (tokens) If automaticallyIncludePromptTokens is false, it'll set the number of tokens that the language model will use, between both prompt length and generation length
-     *              if setting starts with 'te' it'll set the temperature (default 1) a value 0-1 with 1 being very creative, 0 being very factual/deterministic
-     *              if setting starts with 'top' it'll set the topP, (default 1) between 0-1 where 1.0 means "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
-     *              if setting starts with 'f' it'll set the frequencyPenalty, (default 0) 0-1, lowers the chances of a word being selected again the more times that word has already been used
+     *              if setting starts with 'tok' (tokens) If automaticallyIncludePromptTokens is false, it'll set the 
+                        number of tokens that the language model will use, between both prompt length and generation length
+     *              if setting starts with 'te' it'll set the temperature (default 1) a value 0-1 with 1 being very creative, 
+                        0 being very factual/deterministic
+     *              if setting starts with 'top' it'll set the topP, (default 1) between 0-1 where 1.0 means
+                        "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     *              if setting starts with 'f' it'll set the frequencyPenalty, (default 0) 0-1, lowers the chances of a 
+                        word being selected again the more times that word has already been used
      *              if setting starts with 'p' it'll set the presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
-     *              if setting starts with 'b' it'll set the bestOf, (default 1), queries GPT-3 this many times, then selects the 'best' generation to return
-     *              if setting starts with 'c' it'll set cutOffLastPunctuationMark (boolean), whether GPT-3's full output should be cut off after the last detected punctuation mark
-     *              if setting starts with 's' it'll set the stop sequence, the String that GPT-3 will stop generating after (can have 4 stop sequences max)
+     *              if setting starts with 'b' it'll set the bestOf, (default 1), queries GPT-3 this many times, then 
+                        selects the 'best' generation to return
+     *              if setting starts with 'c' it'll set cutOffLastPunctuationMark (boolean), whether GPT-3's full output 
+                        should be cut off after the last detected punctuation mark (if none found after prompt, nothing removed)
+     *              if setting starts with 's' it'll set the stop sequence, the String that GPT-3 will stop generating after
+                        (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
      * @return GPT-3's generated text
      */
 
