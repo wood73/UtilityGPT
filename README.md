@@ -16,11 +16,11 @@ String output2 = UtilityGPT.query(model, prompt, tokens);
 //optional parameters (any # or order) can be sent after the tokens parameter
 //optional parameters are Strings following the format "setting:value"
 //any setting will be recognized by the first 3 letters (sometimes 1)
-String temperature = "temp:.7", topP = "top:.8", frequencyPenalty = "freq:.25", presencePenalty = "pres:.25",
-        bestOf = "best:3", stopSequence1 = "s:\"", stopSequence2 = "s:\n";
+String temperature = "temp:.7", topP = "top:.8", frequencyPenalty = "freq:.25", 
+        presencePenalty = "pres:.25", bestOf = "best:3", stopSequence1 = "s:\"", stopSequence2 = "s:\n";
         
-String output3 = UtilityGPT.query(model, prompt, tokens, temperature, topP, frequencyPenalty, presencePenalty,
-                bestOf, stopSequence1, stopSequence2);
+String output3 = UtilityGPT.query(model, prompt, tokens, temperature, topP, frequencyPenalty, 
+                presencePenalty, bestOf, stopSequence1, stopSequence2);
 ```
 
 In the optional parameter `stop sequence`, the substring taken after the `:` char will **_not_** have leading & trailing spaces removed; however all other optional parameters will.
