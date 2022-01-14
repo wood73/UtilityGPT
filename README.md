@@ -20,8 +20,6 @@ String temperature = "temp:.7", topP = "top:.8", frequencyPenalty = "freq:.25", 
         bestOf = "best:3", stopSequence1 = "s:\"", stopSequence2 = "s:\n";
 String output3 = UtilityGPT.query(model, prompt, tokens, temperature, topP, frequencyPenalty, presencePenalty,
                 bestOf, stopSequence1, stopSequence2);
-
-//
 ```
 
 In the optional parameter `stop sequence`, the substring taken after the `:` char will not have leading & trailing spaces removed; however all other optional parameters will.
