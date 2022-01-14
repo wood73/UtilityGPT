@@ -18,6 +18,7 @@ String output2 = UtilityGPT.query(model, prompt, tokens);
 //any setting will be recognized by the first 3 letters (sometimes 1)
 String temperature = "temp:.7", topP = "top:.8", frequencyPenalty = "freq:.25", presencePenalty = "pres:.25",
         bestOf = "best:3", stopSequence1 = "s:\"", stopSequence2 = "s:\n";
+        
 String output3 = UtilityGPT.query(model, prompt, tokens, temperature, topP, frequencyPenalty, presencePenalty,
                 bestOf, stopSequence1, stopSequence2);
 ```
