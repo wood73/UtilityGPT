@@ -23,7 +23,7 @@ String output3 = UtilityGPT.query(model, prompt, tokens, temperature, topP, freq
                 bestOf, stopSequence1, stopSequence2);
 ```
 
-In the optional parameter `stop sequence`, the substring taken after the `:` char will **not** have leading & trailing spaces removed; however all other optional parameters will.
+In the optional parameter `stop sequence`, the substring taken after the `:` char will **_not_** have leading & trailing spaces removed; however all other optional parameters will.
 
 Required parameters:
 1. Prompt
