@@ -5,7 +5,6 @@ import com.theokanning.openai.completion.CompletionRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 /** A Utility class for the OpenAI GPT-3 Api Client in Java - https://github.com/TheoKanning/openai-java
  *  Enables easier queries to the language model
@@ -50,13 +49,13 @@ public class UtilityGPT {
 
     /** Utility method for using the GPT-3 Java Api Client
      *
+     * @param apiKey, A GPT-3 API key
+     * @param model, GPT-3 model (can pick from UtilityGPT.model_name)
      * @param prompt, Prompt sent to the language model
+     * @param tokens, If automaticallyIncludePromptTokens is false, it'll set the
+     *                  number of tokens that the language model will use, between both prompt length and generation length
      * @param args, any number of String arguments, each argument should be in the format 'setting:value'
      *              Only mandatory settings are model, tokens, and if Utility.apiKey isn't set, the apiKey as well
-     *              if setting starts with 'a', it'll set the apiKey
-     *              if setting starts with 'm' it'll set the model (can use UtilityGPT.model_name)
-     *              if setting starts with 'tok' (tokens) If automaticallyIncludePromptTokens is false, it'll set the
-                        number of tokens that the language model will use, between both prompt length and generation length
      *              if setting starts with 'te' it'll set the temperature (default 1) a value 0-1 with 1 being very creative,
                         0 being very factual/deterministic
      *              if setting starts with 'top' it'll set the topP, (default 1) between 0-1 where 1.0 means
@@ -66,44 +65,37 @@ public class UtilityGPT {
      *              if setting starts with 'p' it'll set the presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      *              if setting starts with 'b' it'll set the bestOf, (default 1), queries GPT-3 this many times, then
                         selects the 'best' generation to return
-     *              if setting starts with 'c' it'll set cutOffLastPunctuationMark (boolean), whether GPT-3's full output
-                        should be cut off after the last detected punctuation mark (if none found after prompt, nothing removed)
+     *              if setting starts with 'c' it'll set cutOffLastPunctuationMark (boolean true/false, or int (0=F,1=T)),
+     *                  whether GPT-3's full output should be cut off after the last detected punctuation mark
+     *                  (if none found after prompt, nothing removed)
      *              if setting starts with 's' it'll set the stop sequence, the String that GPT-3 will stop generating after
                         (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
-     * @return GPT-3's generated text
+     * @return GPT-3's returned text (prompt + generated)
      */
-    public static String query(String prompt, String... args) {
+    public static String query(String apiKey, String model, String prompt, int tokens, String... args) {
+
+        if(automaticallyIncludePromptTokens) {
+            tokens += prompt.length() / 4;
+        }
 
         List<String> stopSequences = new ArrayList<>();
 
         try {
 
-            //initialize apiKey to equate the global, but update it if apiKey was passed in varargs
-            String model = "", apiKey = UtilityGPT.apiKey;
-            int tokens = -1, bestOf = 1;
+            int bestOf = 1;
             double temp = 1, top = 1, freq = 0, pres = 0;
             boolean cutOffLastPunctuationMark = false;
 
             //this flag variable will be used to set bestOf = 1 if (bestOf != 1 && isInstructModel)
             //& warn user, since the OpenAI API will throw an HTTP 500 error if an instruct model is used when bestOf != 1
-            boolean isInstructModel = false;
+            boolean isInstructModel = model.contains("instruct");;
 
             for (int i = 0; i < args.length; i++) {
 
                 String key = args[i].split(":")[0].trim().toLowerCase();
                 String value = key.startsWith("s") ? args[i].split(":")[1] : args[i].split(":")[1].trim();
 
-                if (key.startsWith("a")) {
-                    apiKey = value;
-                } else if (key.startsWith("m")) {
-                    model = value;
-                    isInstructModel = model.contains("instruct");
-                } else if (key.startsWith("tok")) {
-                    tokens = Integer.parseInt(value);
-                    if(automaticallyIncludePromptTokens) {
-                        tokens += prompt.length() / 4;
-                    }
-                } else if (key.startsWith("te")) {
+                if (key.startsWith("te")) {
                     temp = Double.parseDouble(value);
                 } else if (key.startsWith("top")) {
                     top = Double.parseDouble(value);
@@ -129,8 +121,12 @@ public class UtilityGPT {
                         stopSequences.add(value);
                     }
                 }
-
+                else {
+                    System.out.println("Warning: setting \'" + key + "\' not recognized.  Omitting parameter [" +
+                            args[i] + "]");
+                }
             }
+
             tokenCounter += tokens;
             queryCounter++;
             if(printQueryCounter) {
@@ -145,40 +141,158 @@ public class UtilityGPT {
                 bestOf = 1;
             }
 
-            if(model.length() == 0) {
-                System.out.println("Error, model not specified");
+            OpenAiService service = new OpenAiService(apiKey);
+
+            CompletionRequest.CompletionRequestBuilder completionRequestBuilder = CompletionRequest.builder()
+                    .prompt(prompt)
+                    .echo(true);
+
+            completionRequestBuilder.maxTokens(tokens);
+            completionRequestBuilder.temperature(temp);
+            completionRequestBuilder.topP(top);
+            completionRequestBuilder.frequencyPenalty(freq);
+            completionRequestBuilder.presencePenalty(pres);
+            completionRequestBuilder.bestOf(bestOf);
+            if (stopSequences.size() > 0)
+                completionRequestBuilder.stop(stopSequences);
+
+            CompletionRequest completionRequest = completionRequestBuilder.build();
+            List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
+
+            String output = _apiOutputCondensed(outputList.get(0).toString(), prompt.length() - 1,
+                    cutOffLastPunctuationMark);
+
+            return output;
+
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Error in UtilityGPT.query() - varargs passed to method: " + Arrays.toString(args));
+        return "";
+    }
+
+    /** Utility method for using the GPT-3 Java Api Client
+     *  Overloadeded method for use if UtilityGPT.apiKey is set
+     *
+     * @param model, GPT-3 model (can pick from UtilityGPT.model_name)
+     * @param prompt, Prompt sent to the language model
+     * @param tokens, If automaticallyIncludePromptTokens is false, it'll set the
+     *                  number of tokens that the language model will use, between both prompt length and generation length
+     * @param args, any number of String arguments, each argument should be in the format 'setting:value'
+     *              Only mandatory settings are model, tokens, and if Utility.apiKey isn't set, the apiKey as well
+     *              if setting starts with 'te' it'll set the temperature (default 1) a value 0-1 with 1 being very creative,
+                        0 being very factual/deterministic
+     *              if setting starts with 'top' it'll set the topP, (default 1) between 0-1 where 1.0 means
+                        "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+     *              if setting starts with 'f' it'll set the frequencyPenalty, (default 0) 0-1, lowers the chances of a
+                        word being selected again the more times that word has already been used
+     *              if setting starts with 'p' it'll set the presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
+     *              if setting starts with 'b' it'll set the bestOf, (default 1), queries GPT-3 this many times, then
+                        selects the 'best' generation to return
+     *              if setting starts with 'c' it'll set cutOffLastPunctuationMark (boolean true/false, or int (0=F,1=T)),
+     *                  whether GPT-3's full output should be cut off after the last detected punctuation mark
+     *                  (if none found after prompt, nothing removed)
+     *              if setting starts with 's' it'll set the stop sequence, the String that GPT-3 will stop generating after
+                        (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
+     * @return GPT-3's returned text (prompt + generated)
+     */
+    public static String query(String model, String prompt, int tokens, String... args) {
+
+        if(apiKey.length() == 0) {
+            System.out.println("\n\nError: API key is not set.  Either use the overloaded query method requiring the " +
+                            "API key parameter, or first set UtilityGPT.apiKey\n");
+            return "";
+        }
+
+        if(automaticallyIncludePromptTokens) {
+            tokens += prompt.length() / 4;
+        }
+
+        List<String> stopSequences = new ArrayList<>();
+
+        try {
+
+            int bestOf = 1;
+            double temp = 1, top = 1, freq = 0, pres = 0;
+            boolean cutOffLastPunctuationMark = false;
+
+            //this flag variable will be used to set bestOf = 1 if (bestOf != 1 && isInstructModel)
+            //& warn user, since the OpenAI API will throw an HTTP 500 error if an instruct model is used when bestOf != 1
+            boolean isInstructModel = model.contains("instruct");;
+
+            for (int i = 0; i < args.length; i++) {
+
+                String key = args[i].split(":")[0].trim().toLowerCase();
+                String value = key.startsWith("s") ? args[i].split(":")[1] : args[i].split(":")[1].trim();
+
+                if (key.startsWith("te")) {
+                    temp = Double.parseDouble(value);
+                } else if (key.startsWith("top")) {
+                    top = Double.parseDouble(value);
+                } else if (key.startsWith("f")) {
+                    freq = Double.parseDouble(value);
+                } else if (key.startsWith("p")) {
+                    pres = Double.parseDouble(value);
+                } else if (key.startsWith("b")) {
+                    bestOf = Integer.parseInt(value);
+                } else if (key.startsWith("c")) {
+                    //handle if boolean is encoded as number 0,1
+                    try {
+                        cutOffLastPunctuationMark = Integer.parseInt(value) == 1;
+                    } catch(NumberFormatException ex) {
+                        cutOffLastPunctuationMark = Boolean.parseBoolean(value);
+                    }
+                } else if (key.startsWith("s")) {
+                    if(stopSequences.size() == 4) {
+                        System.out.println("Warning: there can not be more than 4 stop sequences, ignoring the" +
+                                " stop sequence \'" + value + "\'");
+                    }
+                    else {
+                        stopSequences.add(value);
+                    }
+                }
+                else {
+                    System.out.println("Warning: setting \'" + key + "\' not recognized.  Omitting parameter [" +
+                            args[i] + "]");
+                }
             }
-            else if(apiKey.length() == 0) {
-                System.out.println("Error, api-key not specified");
+
+            tokenCounter += tokens;
+            queryCounter++;
+            if(printQueryCounter) {
+                System.out.println("---------------------------------------------\n" +
+                        "# of GPT-3 queries: " + queryCounter + "\nTotal tokens used: " + tokenCounter + "\n" +
+                        "---------------------------------------------");
             }
-            else if(tokens == -1) {
-                System.out.println("Error, token count not specified");
+
+            if(isInstructModel && bestOf != 1) {
+                System.out.println("######################\nWarning: Instruct models must have a bestOf value = 1 " +
+                        "(or HTTP 500 error thrown)\nchanging bestOf from " + bestOf + " to 1.\n######################");
+                bestOf = 1;
             }
-            else {
 
-                OpenAiService service = new OpenAiService(apiKey);
+            OpenAiService service = new OpenAiService(apiKey);
 
-                CompletionRequest.CompletionRequestBuilder completionRequestBuilder = CompletionRequest.builder()
-                        .prompt(prompt)
-                        .echo(true);
+            CompletionRequest.CompletionRequestBuilder completionRequestBuilder = CompletionRequest.builder()
+                    .prompt(prompt)
+                    .echo(true);
 
-                completionRequestBuilder.maxTokens(tokens);
-                completionRequestBuilder.temperature(temp);
-                completionRequestBuilder.topP(top);
-                completionRequestBuilder.frequencyPenalty(freq);
-                completionRequestBuilder.presencePenalty(pres);
-                completionRequestBuilder.bestOf(bestOf);
-                if (stopSequences.size() > 0)
-                    completionRequestBuilder.stop(stopSequences);
+            completionRequestBuilder.maxTokens(tokens);
+            completionRequestBuilder.temperature(temp);
+            completionRequestBuilder.topP(top);
+            completionRequestBuilder.frequencyPenalty(freq);
+            completionRequestBuilder.presencePenalty(pres);
+            completionRequestBuilder.bestOf(bestOf);
+            if (stopSequences.size() > 0)
+                completionRequestBuilder.stop(stopSequences);
 
-                CompletionRequest completionRequest = completionRequestBuilder.build();
-                List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
+            CompletionRequest completionRequest = completionRequestBuilder.build();
+            List<CompletionChoice> outputList = service.createCompletion(model, completionRequest).getChoices();
 
-                String output = _apiOutputCondensed(outputList.get(0).toString(), prompt.length() - 1,
-                        cutOffLastPunctuationMark);
+            String output = _apiOutputCondensed(outputList.get(0).toString(), prompt.length() - 1,
+                    cutOffLastPunctuationMark);
 
-                return output;
-            }
+            return output;
 
         }catch(Exception e) {
             e.printStackTrace();
