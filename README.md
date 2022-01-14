@@ -42,7 +42,7 @@ Optional parameters ([more info](https://github.com/woodrow73/UtilityGPT/blob/ma
 
 
 ---------------------------------------------------------------------------------------
-Javadocs for UtilityGPT.query(String prompt, String... args)
+Javadocs for the query method:
 ---------------------------------------------------------------------------------------
 
     /** Utility method for using the GPT-3 Java Api Client
