@@ -1,7 +1,7 @@
 # UtilityGPT
 A Utility for another repository which is an OpenAI GPT-3 Api Client in Java - https://github.com/TheoKanning/openai-java
 
-Enables easier queries to GPT-3 - all data except GPT-3's returned text (including prompt) is currently omitted.
+Enables easier queries to GPT-3 - all data except GPT-3's returned text is currently omitted.
 
 Usage Examples:
 ```
