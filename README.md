@@ -40,7 +40,7 @@ Optional parameters:
 4. Presence Penalty (default 0)
 5. Best Of (default 1)
 6. Stop Sequence (max of 4 stop sequences)
-7. Cut off output after last punctuation mark generated
+7. Cut off output after last punctuation mark generated (boolean, default false)
 
 
 ---------------------------------------------------------------------------------------
