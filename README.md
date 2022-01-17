@@ -33,7 +33,7 @@ Required parameters:
 3. Model
 4. Tokens
 
-Optional parameters ([more info](https://github.com/woodrow73/UtilityGPT/blob/main/README.md/#javadocs-for-utilitygptquerystring-prompt-string-args)):
+Optional parameters:
 1. Temperature (default 1)
 2. TopP (default 1)
 3. Frequency Penalty (default 0)
