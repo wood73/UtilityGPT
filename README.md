@@ -8,11 +8,13 @@ Usage Examples:
 String apiKey = "", prompt = "Java is", model = "ada";
 int tokens = 44;
 String output1 = UtilityGPT.query(apiKey, model, prompt, tokens);
-
+```
+```
 //can set apiKey global variable, and omit sending it as a parameter
 UtilityGPT.apiKey = "";
 String output2 = UtilityGPT.query(model, prompt, tokens);
-
+```
+```
 //optional parameters (any # or order) can be sent after the tokens parameter
 //optional parameters are Strings following the format "setting:value"
 //any setting will be recognized by the first 3 letters (sometimes 1)
