@@ -30,8 +30,8 @@ public class UtilityGPT {
     public static String davinci = "davinci", curie = "curie", babbage = "babbage", ada = "ada";
 
     /** Instruct series models */
-    public static String inDavinci = "davinci-instruct-beta-v3", inCurie = "curie-instruct-beta-v2",
-            inBabbage = "babbage-instruct-beta", inAda = "ada-instruct-beta";
+    public static String inDavinci = "text-davinci-001", inCurie = "text-curie-001",
+            inBabbage = "text-babbage-001", inAda = "text-ada-001";
 
     /** Sets UtilityGPT.apiKey, once set, can use the overloaded methods that don't have an api-key parameter */
     public static void setApiKey(String apiKey) {
@@ -57,19 +57,19 @@ public class UtilityGPT {
      * @param args, any number of String arguments, each argument should be in the format 'setting:value'
      *              Only mandatory settings are model, tokens, and if Utility.apiKey isn't set, the apiKey as well
      *              if setting starts with 'te' it'll set the temperature (default 1) a value 0-1 with 1 being very creative,
-                        0 being very factual/deterministic
+    0 being very factual/deterministic
      *              if setting starts with 'top' it'll set the topP, (default 1) between 0-1 where 1.0 means
-                        "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+    "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      *              if setting starts with 'f' it'll set the frequencyPenalty, (default 0) 0-1, lowers the chances of a
-                        word being selected again the more times that word has already been used
+    word being selected again the more times that word has already been used
      *              if setting starts with 'p' it'll set the presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      *              if setting starts with 'b' it'll set the bestOf, (default 1), queries GPT-3 this many times, then
-                        selects the 'best' generation to return
+    selects the 'best' generation to return
      *              if setting starts with 'c' it'll set cutOffLastPunctuationMark (boolean true/false, or int (0=F,1=T)),
      *                  whether GPT-3's full output should be cut off after the last detected punctuation mark
      *                  (if none found after prompt, nothing removed)
      *              if setting starts with 's' it'll set the stop sequence, the String that GPT-3 will stop generating after
-                        (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
+    (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
      * @return GPT-3's returned text (prompt + generated)
      */
     public static String query(String apiKey, String model, String prompt, int tokens, String... args) {
@@ -181,26 +181,26 @@ public class UtilityGPT {
      * @param args, any number of String arguments, each argument should be in the format 'setting:value'
      *              Only mandatory settings are model, tokens, and if Utility.apiKey isn't set, the apiKey as well
      *              if setting starts with 'te' it'll set the temperature (default 1) a value 0-1 with 1 being very creative,
-                        0 being very factual/deterministic
+    0 being very factual/deterministic
      *              if setting starts with 'top' it'll set the topP, (default 1) between 0-1 where 1.0 means
-                        "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+    "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      *              if setting starts with 'f' it'll set the frequencyPenalty, (default 0) 0-1, lowers the chances of a
-                        word being selected again the more times that word has already been used
+    word being selected again the more times that word has already been used
      *              if setting starts with 'p' it'll set the presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      *              if setting starts with 'b' it'll set the bestOf, (default 1), queries GPT-3 this many times, then
-                        selects the 'best' generation to return
+    selects the 'best' generation to return
      *              if setting starts with 'c' it'll set cutOffLastPunctuationMark (boolean true/false, or int (0=F,1=T)),
      *                  whether GPT-3's full output should be cut off after the last detected punctuation mark
      *                  (if none found after prompt, nothing removed)
      *              if setting starts with 's' it'll set the stop sequence, the String that GPT-3 will stop generating after
-                        (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
+    (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
      * @return GPT-3's returned text (prompt + generated)
      */
     public static String query(String model, String prompt, int tokens, String... args) {
 
         if(apiKey.length() == 0) {
             System.out.println("\n\nError: API key is not set.  Either use the overloaded query method requiring the " +
-                            "API key parameter, or first set UtilityGPT.apiKey\n");
+                    "API key parameter, or first set UtilityGPT.apiKey\n");
             return "";
         }
 
