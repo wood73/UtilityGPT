@@ -57,14 +57,14 @@ public class UtilityGPT {
      * @param args, any number of String arguments, each argument should be in the format 'setting:value'
      *              Only mandatory settings are model, tokens, and if Utility.apiKey isn't set, the apiKey as well
      *              if setting starts with 'te' it'll set the temperature (default 1) a value 0-1 with 1 being very creative,
-    0 being very factual/deterministic
+                        0 being very factual/deterministic
      *              if setting starts with 'top' it'll set the topP, (default 1) between 0-1 where 1.0 means
-    "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+                        "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      *              if setting starts with 'f' it'll set the frequencyPenalty, (default 0) 0-1, lowers the chances of a
-    word being selected again the more times that word has already been used
+                        word being selected again the more times that word has already been used
      *              if setting starts with 'p' it'll set the presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      *              if setting starts with 'b' it'll set the bestOf, (default 1), queries GPT-3 this many times, then
-    selects the 'best' generation to return
+                        selects the 'best' generation to return
      *              if setting starts with 'c' it'll set cutOffLastPunctuationMark (boolean true/false, or int (0=F,1=T)),
      *                  whether GPT-3's full output should be cut off after the last detected punctuation mark
      *                  (if none found after prompt, nothing removed)
@@ -181,14 +181,14 @@ public class UtilityGPT {
      * @param args, any number of String arguments, each argument should be in the format 'setting:value'
      *              Only mandatory settings are model, tokens, and if Utility.apiKey isn't set, the apiKey as well
      *              if setting starts with 'te' it'll set the temperature (default 1) a value 0-1 with 1 being very creative,
-    0 being very factual/deterministic
+                        0 being very factual/deterministic
      *              if setting starts with 'top' it'll set the topP, (default 1) between 0-1 where 1.0 means
-    "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
+                        "use all tokens in the vocabulary" while 0.5 means "use only the 50% most common tokens"
      *              if setting starts with 'f' it'll set the frequencyPenalty, (default 0) 0-1, lowers the chances of a
-    word being selected again the more times that word has already been used
+                        word being selected again the more times that word has already been used
      *              if setting starts with 'p' it'll set the presencePenalty, (default 0) 0-1, lowers the chances of topic repetition
      *              if setting starts with 'b' it'll set the bestOf, (default 1), queries GPT-3 this many times, then
-    selects the 'best' generation to return
+                        selects the 'best' generation to return
      *              if setting starts with 'c' it'll set cutOffLastPunctuationMark (boolean true/false, or int (0=F,1=T)),
      *                  whether GPT-3's full output should be cut off after the last detected punctuation mark
      *                  (if none found after prompt, nothing removed)
