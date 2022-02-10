@@ -89,7 +89,7 @@ public class UtilityGPT {
             //this flag variable will be used to set bestOf = 1 if (bestOf != 1 && isOldInstructModel)
             //& warn user, since the OpenAI API will throw an HTTP 500 error if an old instruct model is used when bestOf != 1
             boolean isOldInstructModel = model.contains("instruct");
-            boolean argsIsAnEmptyString = args.length == 1 && args[0].length() == 0;
+            boolean argsIsAnEmptyString = args.length == 1 && args[0].trim().length() == 0;
 
             for (int i = 0; i < args.length && !argsIsAnEmptyString; i++) {
 
@@ -221,7 +221,7 @@ public class UtilityGPT {
             //this flag variable will be used to set bestOf = 1 if (bestOf != 1 && isOldInstructModel)
             //& warn user, since the OpenAI API will throw an HTTP 500 error if an old instruct model is used when bestOf != 1
             boolean isOldInstructModel = model.contains("instruct");
-            boolean argsIsAnEmptyString = args.length == 1 && args[0].length() == 0;
+            boolean argsIsAnEmptyString = args.length == 1 && args[0].trim().length() == 0;
 
             for (int i = 0; i < args.length && !argsIsAnEmptyString; i++) {
 
