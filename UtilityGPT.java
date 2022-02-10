@@ -69,7 +69,7 @@ public class UtilityGPT {
      *                  whether GPT-3's full output should be cut off after the last detected punctuation mark
      *                  (if none found after prompt, nothing removed)
      *              if setting starts with 's' it'll set the stop sequence, the String that GPT-3 will stop generating after
-    (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
+                        (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
      * @return GPT-3's returned text (prompt + generated)
      */
     public static String query(String apiKey, String model, String prompt, int tokens, String... args) {
@@ -86,9 +86,9 @@ public class UtilityGPT {
             double temp = 1, top = 1, freq = 0, pres = 0;
             boolean cutOffLastPunctuationMark = false;
 
-            //this flag variable will be used to set bestOf = 1 if (bestOf != 1 && isInstructModel)
-            //& warn user, since the OpenAI API will throw an HTTP 500 error if an instruct model is used when bestOf != 1
-            boolean isInstructModel = model.contains("instruct");;
+            //this flag variable will be used to set bestOf = 1 if (bestOf != 1 && isOldInstructModel)
+            //& warn user, since the OpenAI API will throw an HTTP 500 error if an old instruct model is used when bestOf != 1
+            boolean isOldInstructModel = model.contains("instruct");;
 
             for (int i = 0; i < args.length; i++) {
 
@@ -135,9 +135,10 @@ public class UtilityGPT {
                         "---------------------------------------------");
             }
 
-            if(isInstructModel && bestOf != 1) {
-                System.out.println("######################\nWarning: Instruct models must have a bestOf value = 1 " +
-                        "(or HTTP 500 error thrown)\nchanging bestOf from " + bestOf + " to 1.\n######################");
+            if(isOldInstructModel && bestOf != 1) {
+                System.out.println("######################\nWarning: Old Instruct models (before the text-model-001 " +
+                                "series) must have a bestOf value = 1 (or HTTP 500 error thrown)\nchanging bestOf from " +
+                                bestOf + " to 1.\n######################");
                 bestOf = 1;
             }
 
@@ -193,7 +194,7 @@ public class UtilityGPT {
      *                  whether GPT-3's full output should be cut off after the last detected punctuation mark
      *                  (if none found after prompt, nothing removed)
      *              if setting starts with 's' it'll set the stop sequence, the String that GPT-3 will stop generating after
-    (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
+                        (can have 4 stop sequences max) (leading & trailing whitespaces not removed from the value of this setting)
      * @return GPT-3's returned text (prompt + generated)
      */
     public static String query(String model, String prompt, int tokens, String... args) {
@@ -216,9 +217,9 @@ public class UtilityGPT {
             double temp = 1, top = 1, freq = 0, pres = 0;
             boolean cutOffLastPunctuationMark = false;
 
-            //this flag variable will be used to set bestOf = 1 if (bestOf != 1 && isInstructModel)
-            //& warn user, since the OpenAI API will throw an HTTP 500 error if an instruct model is used when bestOf != 1
-            boolean isInstructModel = model.contains("instruct");;
+            //this flag variable will be used to set bestOf = 1 if (bestOf != 1 && isOldInstructModel)
+            //& warn user, since the OpenAI API will throw an HTTP 500 error if an old instruct model is used when bestOf != 1
+            boolean isOldInstructModel = model.contains("instruct");;
 
             for (int i = 0; i < args.length; i++) {
 
@@ -265,9 +266,10 @@ public class UtilityGPT {
                         "---------------------------------------------");
             }
 
-            if(isInstructModel && bestOf != 1) {
-                System.out.println("######################\nWarning: Instruct models must have a bestOf value = 1 " +
-                        "(or HTTP 500 error thrown)\nchanging bestOf from " + bestOf + " to 1.\n######################");
+            if(isOldInstructModel && bestOf != 1) {
+                System.out.println("######################\nWarning: Old Instruct models (before the text-model-001 " +
+                        "series) must have a bestOf value = 1 (or HTTP 500 error thrown)\nchanging bestOf from " +
+                        bestOf + " to 1.\n######################");
                 bestOf = 1;
             }
 
