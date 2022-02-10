@@ -88,9 +88,10 @@ public class UtilityGPT {
 
             //this flag variable will be used to set bestOf = 1 if (bestOf != 1 && isOldInstructModel)
             //& warn user, since the OpenAI API will throw an HTTP 500 error if an old instruct model is used when bestOf != 1
-            boolean isOldInstructModel = model.contains("instruct");;
+            boolean isOldInstructModel = model.contains("instruct");
+            boolean argsIsAnEmptyString = args.length == 1 && args[0].length() == 0;
 
-            for (int i = 0; i < args.length; i++) {
+            for (int i = 0; i < args.length && !argsIsAnEmptyString; i++) {
 
                 String key = args[i].split(":")[0].trim().toLowerCase();
                 String value = key.startsWith("s") ? args[i].split(":")[1] : args[i].split(":")[1].trim();
@@ -219,9 +220,10 @@ public class UtilityGPT {
 
             //this flag variable will be used to set bestOf = 1 if (bestOf != 1 && isOldInstructModel)
             //& warn user, since the OpenAI API will throw an HTTP 500 error if an old instruct model is used when bestOf != 1
-            boolean isOldInstructModel = model.contains("instruct");;
+            boolean isOldInstructModel = model.contains("instruct");
+            boolean argsIsAnEmptyString = args.length == 1 && args[0].length() == 0;
 
-            for (int i = 0; i < args.length; i++) {
+            for (int i = 0; i < args.length && !argsIsAnEmptyString; i++) {
 
                 String key = args[i].split(":")[0].trim().toLowerCase();
                 String value = key.startsWith("s") ? args[i].split(":")[1] : args[i].split(":")[1].trim();
